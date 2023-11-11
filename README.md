@@ -26,8 +26,16 @@
 5. Implemented Infinite Scrolling on Home Page
 
 ## Todos
-   - Implement Refresh Token
-   - Add Mongodb Aggregations
+   1. Implement Refresh Token.
+   2. Use Mongodb Aggregations.
+   3. Add Box Shadow to Login and Signup.
+   4. Add Email Verification while doing Signup and Login.
+   5. Add Forgot Password Path and add Email verification.
+   6. Fix Redux Issue.
+   7. Add Upload photo option and share it with other users.
+   8. User should be able to upload images and these images should be visible to others on Home Page.
+   9. On Visiting the user profile section, user should be able to see all the images shared by them in their respective profile section.
+   10. Download Button Should Work.
 
 
 
