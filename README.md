@@ -1,8 +1,7 @@
-# diatoz-assignment-repo
+
 
 **Backend Deployed Link** - [https://pantyhose-dugong.cyclic.app/](https://pantyhose-dugong.cyclic.app/)
 
-**Frontend Deployed Link** - [https://diatoz-assignment-repo.vercel.app/](https://diatoz-assignment-repo.vercel.app/)
 
 <br/>
 <br/>
@@ -21,6 +20,10 @@
 3. Responsive Design.
 4. Implemented Download and Bookmark Images.
 5. Implemented Infinite Scrolling on Home Page
+
+## Todos
+   - Implement Refresh Token
+   - Add Mongodb Aggregations
 
 
 
