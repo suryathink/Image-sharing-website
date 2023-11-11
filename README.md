@@ -15,7 +15,7 @@
 6. Storing All the Data into MongoDB 
 
 ## Frontend
-1. TechStacks - React, Material UI
+1. TechStacks - React,Redux, Material UI
 2. Home and Favorites Routes are Protected 
 3. Responsive Design.
 4. Implemented Download and Bookmark Images.
