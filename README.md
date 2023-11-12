@@ -27,7 +27,7 @@
 
 
 
-##Todos
+## Todos
 - [ ] Add Box Shadow to Login and Signup.
 - [ ] Use MongoDb Agggregation in favorites page
 - [X] Implement Blacklisting
@@ -45,6 +45,7 @@
 - [ ] Add Email Verification while doing Signup and Login.
 - [ ] Add Forgot Password Path and add Email verification.
 - [ ] If User Changes the token in the Local Storage, in that case Frontend should react properly. It should respond by saying something went wrong and it should redirect to the Login Page.
+- [ ] Convert all Javascript to TypeScript
 
 Bugs
 - [ ]  After Removing any Bookmark from Favorites Page.The Favorite Data on Home Page is not updating I need to refresh the Home Page then only it is updating the Home Page.
