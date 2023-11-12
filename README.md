@@ -25,21 +25,10 @@
 4. Implemented Download and Bookmark Images.
 5. Implemented Infinite Scrolling on Home Page
 
-## Todos
-   1. Implement Refresh Token.
-   2. Use Mongodb Aggregations.
-   3. Add Box Shadow to Login and Signup.
-   4. Add Email Verification while doing Signup and Login.
-   5. Add Forgot Password Path and add Email verification.
-   6. Fix Redux Issue.
-   7. Add Upload photo option and share it with other users.
-   8. User should be able to upload images and these images should be visible to others on Home Page.
-   9. On Visiting the user profile section, user should be able to see all the images shared by them in their respective profile section.
-   10. Download Button Should Work.
 
 
-
-Todos
+##Todos
+- [ ] Add Box Shadow to Login and Signup.
 - [ ] Use MongoDb Agggregation in favorites page
 - [X] Implement Blacklisting
 - [X] Implement Refresh Token in Backend 
@@ -49,6 +38,12 @@ Todos
 - [ ] Admin should be able to see all the Users listed in UI (except the password) and have access to delete users (Use Authorization).
 - [ ] Add Forget Password, Send Emails, verify OTP then Change Password and update that changed password in DB.
 - [ ] While Registration Take Email, send Otp, verify email then only create Account in DB.
+- [ ] Add Upload photo option and share it with other users.
+- [ ] User should be able to upload images and these images should be visible to others on Home Page.
+- [ ] On Visiting the user profile section, user should be able to see all the images shared by them in their respective profile section.
+- [ ] Download Button Should Work
+- [ ] Add Email Verification while doing Signup and Login.
+- [ ] Add Forgot Password Path and add Email verification.
 
 Bugs
 - [ ]  After Removing any Bookmark from Favorites Page.The Favorite Data on Home Page is not updating I need to refresh the Home Page then only it is updating the Home Page.
