@@ -28,10 +28,10 @@
 
 
 ## Todos
-- [ ] Add Box Shadow to Login and Signup.
-- [ ] Use MongoDb Agggregation in favorites page
 - [X] Implement Blacklisting
 - [X] Implement Refresh Token in Backend 
+- [ ] Add Box Shadow to Login and Signup.
+- [ ] Use MongoDb Agggregation in favorites page
 - [ ] Implement Refresh Token in Frontend 
 - [ ] Implement Github Auth
 - [ ] Implement Google Auth
