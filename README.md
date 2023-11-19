@@ -37,7 +37,6 @@
 - [ ] Implement Google Auth
 - [ ] Admin should be able to see all the Users listed in UI (except the password) and have access to delete users (Use Authorization).
 - [ ] Add Forget Password, Send Emails, verify OTP then Change Password and update that changed password in DB.
-- [ ] Send OTP (same email OTP) to Mobile as well via SMS
 - [ ] While Registration Take Email, send Otp, verify email then only create Account in DB.
 - [ ] Add Upload photo option and share it with other users.
 - [ ] User should be able to upload images and these images should be visible to others on Home Page.
@@ -47,7 +46,6 @@
 - [ ] Add Forgot Password Path and add Email verification.
 - [ ] If User Changes the token in the Local Storage, in that case Frontend should react properly. It should respond by saying something went wrong and it should redirect to the Login Page.
 - [ ] Convert all Javascript to TypeScript
-- [ ] Dockerize the Application
 
 Bugs
 - [ ]  After Removing any Bookmark from Favorites Page.The Favorite Data on Home Page is not updating I need to refresh the Home Page then only it is updating the Home Page.
