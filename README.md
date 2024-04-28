@@ -29,7 +29,9 @@
 
 ## Todos
 - [X] Implement Blacklisting
-- [X] Implement Refresh Token in Backend 
+- [X] Implement Refresh Token in Backend
+- [ ] Add Logger to log all the incoming requests store IP Address as well
+- [ ] Make Backend Project Structure into Proper Folder structure
 - [ ] Add Box Shadow to Login and Signup.
 - [ ] Use MongoDb Agggregation in favorites page
 - [ ] Implement Refresh Token in Frontend 
