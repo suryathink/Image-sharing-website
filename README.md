@@ -32,6 +32,9 @@
 - [X] Implement Refresh Token in Backend
 - [ ] Move this project to Next.js including backend
 - [ ] Make it turborepo
+- [ ] create docker compose file
+- [ ] push this to docker hub
+- [ ] Handle authentication using next auth
 - [ ] Add Logger to log all the incoming requests store IP Address as well
 - [ ] Make Backend Project Structure into Proper Folder structure
 - [ ] Add Box Shadow to Login and Signup.
