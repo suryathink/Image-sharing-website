@@ -30,6 +30,8 @@
 ## Todos
 - [X] Implement Blacklisting
 - [X] Implement Refresh Token in Backend
+- [ ] Move this project to Next.js including backend
+- [ ] Make it turborepo
 - [ ] Add Logger to log all the incoming requests store IP Address as well
 - [ ] Make Backend Project Structure into Proper Folder structure
 - [ ] Add Box Shadow to Login and Signup.
