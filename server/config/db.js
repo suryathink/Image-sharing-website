@@ -1,18 +1,22 @@
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
+const log4js = require("log4js");
 dotenv.config();
 mongoose.set("strictQuery", true);
-
+const logger = log4js.getLogger();
 
 const LINK = process.env.LINK;
 
 async function connectDatabase() {
   try {
-    await mongoose.connect(LINK);
-    console.log("Connected to Database");
+    // await mongoose.connect(LINK);
+    await mongoose.connect(LINK, {
+      useNewUrlParser: false,
+      useUnifiedTopology: false,
+    });
+    logger.log("Connected to Database");
   } catch (error) {
-    console.log(error);
-    console.error("Could not connect to the database");
+    logger.error("Could not connect to the database", error);
   }
 }
 

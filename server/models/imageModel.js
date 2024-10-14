@@ -1,35 +1,31 @@
-const mongoose = require('mongoose');
-
+const mongoose = require("mongoose");
 
 const imageSchema = mongoose.Schema({
-    author: {
-        type: String,
-        required: true,
-    },
-    width: {
-        type: Number,
-        required: true,
-    },
-    height: {
-        type: Number,
-        required: true,
-    },
-    url: {
-        type: String,
-        required: true,
-    },
-    download_url: {
-        type: String,
-        required: true,
-    },
-   
-})
+  author: {
+    type: String,
+    required: true,
+  },
+  width: {
+    type: Number,
+    required: true,
+  },
+  height: {
+    type: Number,
+    required: true,
+  },
+  url: {
+    type: String,
+    required: true,
+  },
+  download_url: {
+    type: String,
+    required: true,
+  },
+});
 
-
-const ImageModel = mongoose.model('ImageModel',imageSchema);
+const ImageModel = mongoose.model("ImageModel", imageSchema);
 
 module.exports = ImageModel;
-
 
 /*
 {

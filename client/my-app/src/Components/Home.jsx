@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { toast } from "react-toastify";
+import toast from "react-toastify";
 import { FaBookmark, FaCloudDownloadAlt } from "react-icons/fa";
-import {useDispatch ,useSelector} from 'react-redux'
-import {myActionData,myActionAllData, myActionUser} from "./Redux/Action"
-import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
-
+import { useDispatch, useSelector } from "react-redux";
+import { myActionData, myActionAllData, myActionUser } from "./Redux/Action";
+import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
 
 // https://pantyhose-dugong.cyclic.app/getallData
 const Home = () => {
@@ -19,17 +18,14 @@ const Home = () => {
   const [opacityState, setOpacityState] = useState(-1);
   const [allData, setAllData] = useState([]);
   const [favoritesArray, setFavoritesArray] = useState([]);
-  
+
   const dispatch = useDispatch();
   // getting data from redux store
   const storeData = useSelector((state) => state.data);
   const allDataFromStore = useSelector((state) => state.allData);
   const favData = useSelector((state) => state.user);
 
-
-  
   const fetchData = async (page) => {
-   
     try {
       const token = localStorage.getItem("token");
 
@@ -46,15 +42,14 @@ const Home = () => {
       });
 
       const jsonData = await response.json();
-      myActionUser(jsonData.user.favorites,dispatch)
+      myActionUser(jsonData.user.favorites, dispatch);
       setFavoritesArray(jsonData.user.favorites);
-
 
       if (jsonData.images.length > 0) {
         // Adding new data to the existing previous data
         setData((prevData) => [...prevData, ...jsonData.images]);
         setCurrentPage(page);
-        const jsonImages = jsonData.images
+        const jsonImages = jsonData.images;
         myActionData(jsonImages, dispatch);
       } else {
         // No more data available
@@ -69,10 +64,9 @@ const Home = () => {
   };
 
   const handlePageChange = (page) => {
-  
     if (!loading && !endOfPage && page >= 1 && page !== currentPage) {
       setLoading(true);
-      setCurrentPage(page)
+      setCurrentPage(page);
       fetchData(page);
     }
   };
@@ -89,17 +83,19 @@ const Home = () => {
 
   // Function To get All Data
 
-  const allDataMethod = async () =>{
+  const allDataMethod = async () => {
     try {
-      const data = await fetch (`https://pantyhose-dugong.cyclic.app/getallData`)
+      const data = await fetch(
+        `https://pantyhose-dugong.cyclic.app/getallData`
+      );
       const jsonData = await data.json();
-      setAllData(jsonData)
+      setAllData(jsonData);
       myActionAllData(jsonData, dispatch);
     } catch (error) {
       console.log(error);
     }
-  }
-  
+  };
+
   // Attach event listener for scrolling when the component mounts
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
@@ -108,30 +104,30 @@ const Home = () => {
 
   // Initial load of data
   useEffect(() => {
-    if (storeData.length === 0){
+    if (storeData.length === 0) {
       fetchData(currentPage);
       allDataMethod();
-    } else{
+    } else {
       // const storeData = useSelector((state) => state.data);
-      setData(storeData)
-      setCurrentPage(storeData.length/10)
-      setLoading(false)
-      setAllData(allDataFromStore)
-      setFavoritesArray(favData)
+      setData(storeData);
+      setCurrentPage(storeData.length / 10);
+      setLoading(false);
+      setAllData(allDataFromStore);
+      setFavoritesArray(favData);
     }
   }, []);
 
   // Function to add an image to favorites
   const addToFavorites = async (favID) => {
     try {
-      const token = localStorage.getItem("token"); 
+      const token = localStorage.getItem("token");
       const response = await fetch(
         "https://pantyhose-dugong.cyclic.app/favorite",
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`, 
+            Authorization: `Bearer ${token}`,
           },
           body: JSON.stringify({ favID }),
         }
@@ -139,17 +135,16 @@ const Home = () => {
 
       const data = await response.json();
       // getting favorites array
-  
-      myActionUser(data.user.favorites,dispatch)
+
+      myActionUser(data.user.favorites, dispatch);
       setFavoritesArray(data.user.favorites);
 
-      // send new fav array to redux  
-      
+      // send new fav array to redux
+
       toast.success(data.message);
     } catch (error) {
       // console.error('Error adding to favorites:', error);
       toast.error("Adding to Bookmarks Failed");
-
     }
   };
 
@@ -169,24 +164,24 @@ const Home = () => {
             style={styles.imageWrapper}
           >
             <img src={item.download_url} alt="" style={styles.image} />
-          
 
             <div
               style={{ ...styles.overlay, opacity: opacityState == i ? 1 : 0 }}
             >
-              <p style={{marginBottom:"0px"}}>{item.author}</p>
-              <div style={{ display: "flex",  color: "white" }}>
+              <p style={{ marginBottom: "0px" }}>{item.author}</p>
+              <div style={{ display: "flex", color: "white" }}>
                 <button
                   onClick={() => {
                     addToFavorites(item._id);
                   }}
                 >
-                {
-                  favoritesArray.includes(item._id) ? <FaBookmark/> : <BookmarkBorderIcon/>
-
-                }
-                  
-                </button>&nbsp;&nbsp;&nbsp;
+                  {favoritesArray.includes(item._id) ? (
+                    <FaBookmark />
+                  ) : (
+                    <BookmarkBorderIcon />
+                  )}
+                </button>
+                &nbsp;&nbsp;&nbsp;
                 <button>
                   <a
                     style={{ textDecoration: "none", color: "white" }}
@@ -245,7 +240,7 @@ const styles = {
     flexDirection: "column",
     alignItems: "center",
     padding: "30px",
-    paddingTop: "80px"
+    paddingTop: "80px",
   },
   imageContainer: {
     display: "grid",

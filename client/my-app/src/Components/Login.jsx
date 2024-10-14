@@ -1,5 +1,5 @@
-import React, { useState, useContext ,useEffect} from "react";
-import { toast } from "react-toastify";
+import React, { useState, useContext, useEffect } from "react";
+import toast from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
@@ -46,18 +46,14 @@ export default function SignIn() {
 
   const navigate = useNavigate();
 
-
   useEffect(() => {
-    const token = localStorage.getItem("token")
+    const token = localStorage.getItem("token");
 
-    if (token){
-      setIsAuth(true)
-      navigate("/")
+    if (token) {
+      setIsAuth(true);
+      navigate("/");
     }
-  
-  }, [])
-  
-
+  }, []);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -96,12 +92,10 @@ export default function SignIn() {
     } catch (error) {
       console.error("Error logging in:", error);
       // toast.error("Something Went Wrong",error)
-
     } finally {
       setLoading(false); // Stop loading
     }
   }
-
 
   const handleEmailChange = (e) => {
     const email = e.target.value;
@@ -111,7 +105,6 @@ export default function SignIn() {
     setEmailError(!isValidEmail);
     setEmailState(email);
   };
-
 
   return (
     <ThemeProvider theme={defaultTheme}>

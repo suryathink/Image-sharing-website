@@ -1,0 +1,32 @@
+name: Lint and Format Check (Server Folder)
+
+on:
+  pull_request:
+    paths:
+      - "server/**" # Only trigger this workflow if files in the 'server' folder are modified.
+
+jobs:
+  lint-and-format:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: server # Restrict commands to the 'server' folder
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18" # Ensure you're using Node.js 18 as per your project requirement
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run ESLint (lint:fix)
+        run: npm run lint:fix
+
+      - name: Run Prettier (format:fix)
+        run: npm run format:fix
