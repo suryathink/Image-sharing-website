@@ -40,6 +40,8 @@ async function authMiddleware(req, res, next) {
         message: "User is not logged in",
       });
     }
+
+    // mkkd
   } catch (err) {
     console.error(err);
 
