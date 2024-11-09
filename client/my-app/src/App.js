@@ -12,8 +12,6 @@ import PrivateComp from "./Components/Context/Privateroute";
 
 function App() {
   let [isAuth, setIsAuth] = useState(false);
-  const BASE_URL = process.env.REACT_APP_BACKEND_DEPLOYED_LINK;
-  console.log("BASE_URL", BASE_URL);
 
   return (
     <div className="App">
