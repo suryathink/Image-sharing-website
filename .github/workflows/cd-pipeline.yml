@@ -1,0 +1,67 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-push:
+    name: Build and Push to Docker Hub
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Log in to Docker Hub
+        env:
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+        run: echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USERNAME}" --password-stdin
+
+      - name: Change directory to server and Build Docker image
+        working-directory: server
+        run: docker build -t suryathink/image-sharing-backend:latest .
+
+      - name: Push Docker image to Docker Hub
+        run: docker push suryathink/image-sharing-backend:latest
+
+  deploy:
+    name: Deploy to AWS EC2
+    runs-on: ubuntu-latest
+    needs: build-and-push
+
+    steps:
+      - name: Install SSH Client
+        run: sudo apt-get install -y openssh-client
+
+      - name: Prepare and Deploy to EC2
+        env:
+          EC2_HOST: ${{ secrets.EC2_HOST }}
+          EC2_USER: ${{ secrets.EC2_USER }}
+          EC2_KEY: ${{ secrets.EC2_KEY }}
+        run: |
+          # Save PEM key with line breaks and set permissions
+          echo "${EC2_KEY}" | sed 's/\\n/\
+          /g' > ec2_key.pem
+          chmod 400 ec2_key.pem
+
+          # Test SSH connection
+          ssh -o StrictHostKeyChecking=no -i ec2_key.pem ${EC2_USER}@${EC2_HOST} "echo Connected successfully"
+
+          # Run Docker commands on the EC2 instance
+          ssh -o StrictHostKeyChecking=no -i ec2_key.pem ${EC2_USER}@${EC2_HOST} << EOF
+            docker login -u "${{ secrets.DOCKER_USERNAME }}" -p "${{ secrets.DOCKER_PASSWORD }}"
+            docker pull suryathink/image-sharing-backend:latest
+            docker stop image-sharing-backend-container || true
+            docker rm image-sharing-backend-container || true
+            docker run -d -p 8765:8765 --name image-sharing-backend-container \
+              --env-file /home/ubuntu/.env \
+              suryathink/image-sharing-backend:latest
+          EOF
