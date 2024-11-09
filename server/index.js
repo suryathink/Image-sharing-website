@@ -20,7 +20,7 @@ app.use(endpointLogMiddleware);
 app.use("/", authRouter);
 
 connectDatabase().then(() => {
-  app.listen(8080, () =>
-    logger.log("Server listening on http://localhost:8080")
+  app.listen(8765, () =>
+    logger.log("Server listening on http://localhost:8765")
   );
 });
