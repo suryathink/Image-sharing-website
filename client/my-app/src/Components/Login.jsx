@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
-import toast from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
@@ -65,7 +65,7 @@ export default function SignIn() {
   };
 
   async function loginUser(email, password) {
-    const apiUrl = "https://pantyhose-dugong.cyclic.app/login";
+    const apiUrl = `${process.env.REACT_APP_BACKEND_DEPLOYED_LINK}/login`;
 
     try {
       setLoading(true);

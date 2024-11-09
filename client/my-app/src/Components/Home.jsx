@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import toast from "react-toastify";
+import { toast } from "react-toastify";
 import { FaBookmark, FaCloudDownloadAlt } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { myActionData, myActionAllData, myActionUser } from "./Redux/Action";
@@ -8,7 +8,7 @@ import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
 // https://pantyhose-dugong.cyclic.app/getallData
 const Home = () => {
   const itemsPerPage = 10;
-  const apiUrl = "https://pantyhose-dugong.cyclic.app/getImages";
+  const apiUrl = `${process.env.REACT_APP_BACKEND_DEPLOYED_LINK}/getImages`;
 
   const [data, setData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -82,11 +82,10 @@ const Home = () => {
   };
 
   // Function To get All Data
-
   const allDataMethod = async () => {
     try {
       const data = await fetch(
-        `https://pantyhose-dugong.cyclic.app/getallData`
+        `${process.env.REACT_APP_BACKEND_DEPLOYED_LINK}/getallData`
       );
       const jsonData = await data.json();
       setAllData(jsonData);
@@ -122,7 +121,7 @@ const Home = () => {
     try {
       const token = localStorage.getItem("token");
       const response = await fetch(
-        "https://pantyhose-dugong.cyclic.app/favorite",
+        `${process.env.REACT_APP_BACKEND_DEPLOYED_LINK}/favorite`,
         {
           method: "POST",
           headers: {

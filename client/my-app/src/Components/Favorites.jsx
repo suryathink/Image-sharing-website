@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { FaBookmark, FaCloudDownloadAlt } from "react-icons/fa";
-import toast from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
+// import "dotenv/config";
 
 const Favorites = () => {
   const token = localStorage.getItem("token");
@@ -12,6 +13,9 @@ const Favorites = () => {
   const [allData, setallData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [opacityState, setOpacityState] = useState(-1);
+
+  const BASE_URL = process.env.BACKEND_DEPLOYED_LINK;
+  console.log("BASE_URL", BASE_URL);
 
   const dispatch = useDispatch();
   // getting data from redux store
@@ -27,7 +31,7 @@ const Favorites = () => {
   const fetchFavoriteDataArray = async (token) => {
     setLoading(true);
     try {
-      const apiUrl = `https://pantyhose-dugong.cyclic.app/getfavoritedata`;
+      const apiUrl = `${process.env.REACT_APP_BACKEND_DEPLOYED_LINK}/getfavoritedata`;
       const response = await fetch(apiUrl, {
         method: "POST",
         headers: {
@@ -51,7 +55,7 @@ const Favorites = () => {
       const token = localStorage.getItem("token"); // Replace 'token' with the key used to store the token in localStorage.
 
       const response = await fetch(
-        "https://pantyhose-dugong.cyclic.app/favorite",
+        `${process.env.REACT_APP_BACKEND_DEPLOYED_LINK}/favorite`,
         {
           method: "POST",
           headers: {

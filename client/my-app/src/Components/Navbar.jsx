@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { ctx } from "./Context/AuthContext";
 import { useContext } from "react";
-import toast from "react-toastify";
+import { toast } from "react-toastify";
 import { useState } from "react";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
@@ -32,19 +32,20 @@ function NavbarComponent() {
   };
 
   const handleLogout = async () => {
-    const backendUrl = `https://pantyhose-dugong.cyclic.app`;
-
     try {
       setLoading(true);
       const token = localStorage.getItem("token");
 
-      const response = await fetch(`${backendUrl}/logout`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await fetch(
+        `${process.env.REACT_APP_BACKEND_DEPLOYED_LINK}/logout`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
 
       if (response.ok) {
         localStorage.removeItem("token"); // Clear the token from localStorage.

@@ -5,13 +5,15 @@ import Home from "./Components/Home";
 import Login from "./Components/Login";
 import Signup from "./Components/Signup";
 import Favorites from "./Components/Favorites";
-import ToastContainer from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import { useState } from "react";
 import Dialog from "./Components/Dialog";
 import PrivateComp from "./Components/Context/Privateroute";
 
 function App() {
   let [isAuth, setIsAuth] = useState(false);
+  const BASE_URL = process.env.REACT_APP_BACKEND_DEPLOYED_LINK;
+  console.log("BASE_URL", BASE_URL);
 
   return (
     <div className="App">

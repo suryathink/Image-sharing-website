@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import toast from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -50,7 +50,7 @@ export default function SignUp() {
     try {
       // POST request
       const response = await fetch(
-        "https://pantyhose-dugong.cyclic.app/signup",
+        `${process.env.REACT_APP_BACKEND_DEPLOYED_LINK}/signup`,
         {
           method: "POST",
           body: JSON.stringify({

@@ -144,3 +144,7 @@
 [2024-10-14T21:05:06.822] [INFO] default - Connected to Database
 [2024-10-14T21:05:06.837] [INFO] default - Server listening on http://localhost:8080
 [2024-10-16T12:25:41.016] [INFO] default - Connected to Database
+[2024-11-09T14:57:34.907] [INFO] default - Connected to Database
+[2024-11-09T14:57:34.919] [INFO] default - Server listening on http://localhost:8080
+[2024-11-09T14:58:15.418] [INFO] default - Connected to Database
+[2024-11-09T14:58:15.449] [INFO] default - Server listening on http://localhost:8765
